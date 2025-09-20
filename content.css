@@ -1,0 +1,33 @@
+/* Content script styles for injected elements */
+
+.factcheck-highlight {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.factcheck-highlight:hover {
+    box-shadow: 0 0 5px rgba(255, 255, 0, 0.5);
+}
+
+.factcheck-highlight.annotated {
+    background-color: #90EE90 !important;
+}
+
+/* Notification styles */
+.factcheck-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    z-index: 10000;
+    font-size: 14px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
