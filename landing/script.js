@@ -1,5 +1,28 @@
 // Landing page script
 
+// Debug logging for hero image - added immediately to catch load/error events
+const heroImage = document.querySelector('.hero-image img');
+if (heroImage) {
+  console.log('Hero image element found, src:', heroImage.src);
+  heroImage.addEventListener('load', () => {
+    console.log('Hero image loaded successfully');
+  });
+  heroImage.addEventListener('error', (e) => {
+    console.error('Hero image failed to load:', e);
+    console.error('Image src:', heroImage.src);
+  });
+  // Check if already loaded
+  if (heroImage.complete) {
+    if (heroImage.naturalHeight === 0) {
+      console.error('Hero image failed to load (naturalHeight is 0)');
+    } else {
+      console.log('Hero image already loaded');
+    }
+  }
+} else {
+  console.error('Hero image element not found');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Install button functionality
   const installButtons = document.querySelectorAll('#install-button, #install-button-bottom');
@@ -60,4 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.feature-card, .step, .faq-item').forEach(el => {
     observer.observe(el);
   });
+
+  // Debug logging for hero image
+  const heroImage = document.querySelector('.hero-image img');
+  if (heroImage) {
+    heroImage.addEventListener('load', () => {
+      console.log('Hero image loaded successfully');
+    });
+    heroImage.addEventListener('error', (e) => {
+      console.error('Hero image failed to load:', e);
+      console.error('Image src:', heroImage.src);
+    });
+  } else {
+    console.error('Hero image element not found');
+  }
 });
